@@ -32,12 +32,8 @@ const Mint = () => {
   const [file, setFile] = useState(null);
   const [selectedFile, setSelectedFile] = useState();
   const [preview, setPreview] = useState();
-  const [checked, setChecked] = useState(false);
   const [description, setDescription] = useState(null);
 
-  const handleChange = (event) => {
-    setChecked(event.target.checked);
-  };
   let history = useNavigate();
 
   const saveData = async ({ title, category, attributes, price }) => {
@@ -104,10 +100,9 @@ const Mint = () => {
                       background: "white",
                     }}
                   >
-                    <h4>Create NFT</h4>
+                    <h4>Create Tokens</h4>
                     <Formik
                       initialValues={{
-                        authorname: "",
                         title: "",
                         text: "",
                         category: "",
@@ -131,7 +126,8 @@ const Mint = () => {
                                 style={{ marginLeft: 10, marginTop: 10 }}
                               >
                                 <label for="title" className="my-2">
-                                  Title <span className="text-danger">*</span>
+                                  Item Title{" "}
+                                  <span className="text-danger">*</span>
                                 </label>
                                 <Field
                                   type="text"
@@ -147,29 +143,7 @@ const Mint = () => {
                                 />
                               </div>
                             </Grid>
-                            <Grid item lg={6} md={6} sm={12} xs={12}>
-                              <div
-                                className="form-group"
-                                style={{ marginLeft: 10, marginTop: 10 }}
-                              >
-                                <label for="title" className="my-2">
-                                  Author Name{" "}
-                                  <span className="text-danger">*</span>
-                                </label>
-                                <Field
-                                  type="text"
-                                  name="authorname"
-                                  autoComplete="flase"
-                                  placeholder="Enter Author name"
-                                  className={`form-control text-muted ${
-                                    touched.authorname && errors.authorname
-                                      ? "is-invalid"
-                                      : ""
-                                  }`}
-                                  style={{ marginRight: 10, padding: 9 }}
-                                />
-                              </div>
-                            </Grid>
+
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                               <div
                                 className="form-group"
@@ -198,7 +172,7 @@ const Mint = () => {
                                 style={{ marginLeft: 10, marginTop: 10 }}
                               >
                                 <label for="title" className="my-2">
-                                  Choose category{" "}
+                                  Choose type{" "}
                                   <span className="text-danger">*</span>
                                 </label>
                                 <Field
@@ -265,7 +239,7 @@ const Mint = () => {
                                   onChange={(e) =>
                                     setDescription(e.target.value)
                                   }
-                                  placeholder="Minimum 3 rows"
+                                  placeholder="Please enter some descriptions"
                                   style={{ width: "100%" }}
                                   className={`form-control text-muted ${
                                     touched.text && errors.text
@@ -275,39 +249,7 @@ const Mint = () => {
                                 />
                               </div>
                             </Grid>
-                            <Grid item lg={6} md={6} sm={12} xs={12}>
-                              <div
-                                className="form-group"
-                                style={{ marginLeft: 10, marginTop: 10 }}
-                              >
-                                <label for="title" className="my-2">
-                                  Royalty amount{" "}
-                                </label>
-                                <div style={{ float: "right" }}>
-                                  <Switch
-                                    checked={checked}
-                                    onChange={handleChange}
-                                    inputProps={{
-                                      "aria-label": "controlled",
-                                    }}
-                                  />
-                                </div>
-                                {checked && (
-                                  <Field
-                                    type="number"
-                                    name="royelty"
-                                    autoComplete="flase"
-                                    placeholder="Enter royalty amount (%)"
-                                    className={`form-control text-muted ${
-                                      touched.royelty && errors.royelty
-                                        ? "is-invalid"
-                                        : ""
-                                    }`}
-                                    style={{ marginRight: 10, padding: 9 }}
-                                  />
-                                )}
-                              </div>
-                            </Grid>
+
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                               <div
                                 className="form-group"
@@ -427,11 +369,16 @@ const Mint = () => {
                                 }}
                               >
                                 <span className="input-group-btn">
-                                  <input
-                                    className="btn btn-default btn-primary float-right"
+                                  <Button
                                     type="submit"
-                                    value={"Submit"}
-                                  />
+                                    variant="contained"
+                                    sx={{
+                                      marginRight: "20px",
+                                      textTransform: "none",
+                                    }}
+                                  >
+                                    Submit{" "}
+                                  </Button>
                                 </span>
                               </div>
                             </Grid>
