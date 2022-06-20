@@ -40,7 +40,7 @@ function Footer() {
             href="https://www.pwc.com/"
             style={{ textDecoration: "none", marginRight: "30px" }}
           >
-            <img src={PwcLogo} height={"60px"} width={"60px"} alt="img" />
+            <img src={PwcLogo} height={"50px"} width={"60px"} alt="img" />
           </Link>
 
           <Copyright />

@@ -155,7 +155,7 @@ const Header = () => {
         <Toolbar>
           <img
             src={PwcLogo}
-            height={"60px"}
+            height={"50px"}
             width={"60px"}
             alt="logo"
             onClick={() => history("/")}
