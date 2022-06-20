@@ -6,17 +6,17 @@ import { _transction } from "../../src/CONTRACT-ABI/connect";
 import { create } from "ipfs-http-client";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
-import Web3 from "web3";
+// import Web3 from "web3";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
 import Switch from "@mui/material/Switch";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
-
+import { IpfsViewLink, IPFSLink } from "../config";
 import { pink } from "@mui/material/colors";
 import TransctionModal from "../components/shared/TransctionModal";
 
-const web3 = new Web3(window.ethereum);
+// const web3 = new Web3(window.ethereum);
 
-const client = create("https://ipfs.infura.io:5001/api/v0");
+const client = create(IPFSLink);
 
 // const VendorSchema = Yup.object().shape({
 //   name: Yup.string().required("Name is required"),
@@ -40,61 +40,26 @@ const Mint = () => {
   };
   let history = useNavigate();
 
-  const saveData = async ({
-    title,
-    authorname,
-    category,
-    attributes,
-    price,
-    royelty,
-  }) => {
+  const saveData = async ({ title, category, attributes, price }) => {
     setStart(true);
     let responseData;
 
-    const dummyAttrribute = [
-      {
-        display_type: "boost_number",
-        trait_type: "Aqua Power",
-        value: 40,
-      },
-      {
-        display_type: "boost_percentage",
-        trait_type: "Stamina Increase",
-        value: 10,
-      },
-      {
-        display_type: "number",
-        trait_type: "Generation",
-        value: 2,
-      },
-      {
-        display_type: "date",
-        trait_type: "publish-date",
-        value: new Date(),
-      },
-    ];
     if (file) {
-      const results = await await client.add(file);
-      console.log("--img fingerpring-->", results.path);
+      const results = await client.add(file);
       const metaData = {
         name: title,
-        author: authorname,
         category: category,
-        image: `https://ipfs.infura.io/ipfs/${results.path}`,
+        image: IpfsViewLink(results.path),
         description: description,
-        attributes: attributes.concat(dummyAttrribute),
+        attributes: attributes,
       };
 
-      const resultsSaveMetaData = await await client.add(
-        JSON.stringify(metaData)
-      );
-      console.log("---metadta-->", resultsSaveMetaData.path);
+      const resultsSaveMetaData = await client.add(JSON.stringify(metaData));
 
       responseData = await _transction(
         "mintNFT",
-        `https://ipfs.infura.io/ipfs/${resultsSaveMetaData.path}`,
-        web3.utils.toWei(price.toString(), "ether"),
-        royelty,
+        IpfsViewLink(resultsSaveMetaData.path),
+        price,
         category
       );
     }
