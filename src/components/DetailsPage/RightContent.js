@@ -18,9 +18,10 @@ import Attributes from "./Attributes";
 import TransactionHistory from "./TransactionHistory";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-import UpdatePrice from "./UpdatePrice";
+// import UpdatePrice from "./UpdatePrice";
+import { convertToToken } from "../../utils";
 
-const countData = ["05", "08", "35", "12"];
+// const countData = ["05", "08", "35", "12"];
 
 const RightContent = ({
   nftData,
@@ -51,7 +52,7 @@ const RightContent = ({
               Author
             </Typography>
             <Typography sx={{ fontSize: 11, fontWeight: "bold" }}>
-              {nftData?.author}
+              PwC
             </Typography>
           </div>
         </Stack>
@@ -98,11 +99,11 @@ const RightContent = ({
         <Typography sx={{ fontWeight: "600", fontSize: "14px" }}>
           Price
         </Typography>
-        <Typography
+        {/* <Typography
           sx={{ fontWeight: "600", fontSize: "14px", color: "#ABB2B9" }}
         >
           Ends in
-        </Typography>
+        </Typography> */}
       </Stack>
       <Grid container marginTop="10px">
         <Grid xs={6}>
@@ -115,12 +116,12 @@ const RightContent = ({
               alt="nft"
             />
             <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-              {price / 1000000000000000000} ETH
+              {convertToToken(price)} PWCTOKEN
             </Typography>
           </Stack>
         </Grid>
 
-        <Grid xs={6} sx={{ textAlign: "right" }}>
+        {/* <Grid xs={6} sx={{ textAlign: "right" }}>
           {countData.map((card) => (
             <Box
               key={card}
@@ -138,7 +139,7 @@ const RightContent = ({
               {card}
             </Box>
           ))}
-        </Grid>
+        </Grid> */}
       </Grid>
       {owner !== account ? (
         <div style={{ marginTop: "30px", marginBottom: "30px" }}>
@@ -154,7 +155,7 @@ const RightContent = ({
             }}
             onClick={buynow}
           >
-            Buy for {price / 1000000000000000000} ETH
+            Buy for {convertToToken(price)} PWCTOKEN
           </Button>
           <Button
             variant="outlined"
@@ -173,11 +174,11 @@ const RightContent = ({
         </div>
       ) : (
         <div style={{ marginTop: "30px", marginBottom: "30px" }}>
-          <UpdatePrice
+          {/* <UpdatePrice
             price={price}
             tokenId={tokenId}
             fetchNftInfo={fetchNftInfo}
-          />
+          /> */}
         </div>
       )}
 

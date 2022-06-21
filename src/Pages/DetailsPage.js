@@ -3,7 +3,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { CssBaseline, Container, Grid } from "@mui/material";
 import RightContent from "../components/DetailsPage/RightContent";
 import LeftConrent from "../components/DetailsPage/LeftConrent";
-import { _fetch, _account } from "../CONTRACT-ABI/connect";
+import { _fetch, _Walletaccount } from "../CONTRACT-ABI/connect";
 import ContractAddress from "../CONTRACT-ABI/Address.json";
 import { useParams } from "react-router-dom";
 import RecentActivity from "../components/shared/RecentActivity";
@@ -32,7 +32,7 @@ export default function DetailsPage({ match }) {
     const getAllTokenUri = await _fetch("tokenURI", tokenId);
     const getOwner = await _fetch("ownerOf", tokenId);
     setOwner(getOwner);
-    const account = await _account();
+    const account = await _Walletaccount();
     setAccount(account);
     const price = await _fetch("getNftPrice", tokenId);
     setPrice(price);

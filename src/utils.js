@@ -9,3 +9,13 @@ export const validateUserWithWallat = () => {
   //   const accounts = metamaskWeb3.eth.getAccounts();
   //   return accounts[0] === decode(getUid);
 };
+
+const multiplier = 100000;
+
+export const convertToToken = (token) => {
+  return token / multiplier;
+};
+
+export const convertFromToken = (token) => {
+  return token * multiplier;
+};

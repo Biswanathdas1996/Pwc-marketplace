@@ -2,7 +2,7 @@
 import { Grid } from "@mui/material";
 import React, { useState, useEffect } from "react";
 import { TabPanel } from "@mui/lab";
-import { _fetch, _account } from "../../CONTRACT-ABI/connect";
+import { _fetch, _Walletaccount } from "../../CONTRACT-ABI/connect";
 import NftCard from "../shared/NFT-Card";
 import NoData from "../shared/NoData";
 import Loader from "../shared/Loader";
@@ -18,7 +18,7 @@ const MyCollections = () => {
   async function fetchAllPosts() {
     setLoading(true);
     const getAllToken = await _fetch("getToken");
-    const account = await _account();
+    const account = await _Walletaccount();
     console.log(account);
     const tokenOwnedByMe = [];
 

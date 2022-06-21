@@ -7,11 +7,12 @@ import Typography from "@mui/material/Typography";
 import { Tooltip } from "@mui/material";
 import Avatars from "./Avatars";
 import { useNavigate } from "react-router-dom";
-import { _fetch, _account } from "../../CONTRACT-ABI/connect";
+import { _fetch, _Walletaccount } from "../../CONTRACT-ABI/connect";
 import { buyNft } from "../../functions/buyNft";
 import TransctionModal from "./TransctionModal";
 import MarkAsFevourite from "./MarkAsFevourite";
 import RedirectToOpenSea from "./RedirectToOpenSea";
+import { convertToToken } from "../../utils";
 
 export default function NFTCard({ tokenId, reload = () => null }) {
   const [nftData, setNftData] = useState(null);
@@ -34,7 +35,7 @@ export default function NFTCard({ tokenId, reload = () => null }) {
     setPrice(price);
     const getOwner = await _fetch("ownerOf", tokenId);
     setOwner(getOwner);
-    const account = await _account();
+    const account = await _Walletaccount();
     setAccount(account);
 
     await fetch(getAllTokenUri)
@@ -134,7 +135,7 @@ export default function NFTCard({ tokenId, reload = () => null }) {
                 Price{" "}
               </span>
               <strong style={{ fontSize: 12, fontWeight: "bold" }}>
-                {price / 1000000000000000000} ETH
+                {convertToToken(price)} PWCTOKEN
               </strong>
             </p>
           </div>

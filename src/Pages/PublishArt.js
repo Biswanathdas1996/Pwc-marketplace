@@ -8,12 +8,11 @@ import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
 // import Web3 from "web3";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
-import Switch from "@mui/material/Switch";
 import DeleteOutlineIcon from "@mui/icons-material/Delete";
 import { IpfsViewLink, IPFSLink } from "../config";
 import { pink } from "@mui/material/colors";
 import TransctionModal from "../components/shared/TransctionModal";
-
+import { convertFromToken } from "../utils";
 // const web3 = new Web3(window.ethereum);
 
 const client = create(IPFSLink);
@@ -24,7 +23,6 @@ const client = create(IPFSLink);
 //   price: Yup.string().required("Price is required"),
 //   royelty: Yup.string().required("Royelty amount is required"),
 // });
-// WCVDU52748WW4F7EKDEDB89HKH41BIA4N2
 
 const Mint = () => {
   const [start, setStart] = useState(false);
@@ -55,13 +53,11 @@ const Mint = () => {
       responseData = await _transction(
         "mintNFT",
         IpfsViewLink(resultsSaveMetaData.path),
-        price,
+        convertFromToken(price),
         category
       );
     }
     setResponse(responseData);
-
-    console.log("responseData", responseData);
   };
 
   useEffect(() => {
@@ -120,6 +116,37 @@ const Mint = () => {
                       {({ touched, errors, isSubmitting, values }) => (
                         <Form>
                           <Grid container>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
+                              <div
+                                className="form-group"
+                                style={{ marginLeft: 10, marginTop: 10 }}
+                              >
+                                <label for="title" className="my-2">
+                                  Choose type{" "}
+                                  <span className="text-danger">*</span>
+                                </label>
+                                <Field
+                                  name="category"
+                                  component="select"
+                                  className={`form-control text-muted ${
+                                    touched.category && errors.category
+                                      ? "is-invalid"
+                                      : ""
+                                  }`}
+                                  style={{ marginRight: 10, padding: 9 }}
+                                >
+                                  <option>-- Please select --</option>
+                                  <option value="Collectables">
+                                    Collectables
+                                  </option>
+                                  <option value="Services">Services</option>
+                                  <option value="Award">Award</option>
+                                  <option value="Memorabilla">
+                                    Memorabilla
+                                  </option>
+                                </Field>
+                              </div>
+                            </Grid>
                             <Grid item lg={6} md={6} sm={12} xs={12}>
                               <div
                                 className="form-group"
@@ -156,7 +183,7 @@ const Mint = () => {
                                   type="number"
                                   name="price"
                                   autoComplete="flase"
-                                  placeholder="Enter price in ETH"
+                                  placeholder="Enter price in PWCTOKEN"
                                   className={`form-control text-muted ${
                                     touched.price && errors.price
                                       ? "is-invalid"
@@ -166,32 +193,7 @@ const Mint = () => {
                                 />
                               </div>
                             </Grid>
-                            <Grid item lg={6} md={6} sm={12} xs={12}>
-                              <div
-                                className="form-group"
-                                style={{ marginLeft: 10, marginTop: 10 }}
-                              >
-                                <label for="title" className="my-2">
-                                  Choose type{" "}
-                                  <span className="text-danger">*</span>
-                                </label>
-                                <Field
-                                  name="category"
-                                  component="select"
-                                  className={`form-control text-muted ${
-                                    touched.category && errors.category
-                                      ? "is-invalid"
-                                      : ""
-                                  }`}
-                                  style={{ marginRight: 10, padding: 9 }}
-                                >
-                                  <option>-- Please select --</option>
-                                  <option value="art">Art</option>
-                                  <option value="music">Music</option>
-                                  <option value="sports">Sports</option>
-                                </Field>
-                              </div>
-                            </Grid>
+
                             <Grid item lg={12} md={12} sm={12} xs={12}>
                               <div
                                 className="form-group"

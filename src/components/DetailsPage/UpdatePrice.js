@@ -63,7 +63,7 @@ const UpdatePrice = ({ price, tokenId, fetchNftInfo }) => {
                       type="text"
                       name="amount"
                       autoComplete="flase"
-                      placeholder="Enter amount (ETH)"
+                      placeholder="Enter amount (PWCTOKEN)"
                       className={`form-control text-muted ${
                         touched.amount && errors.amount ? "is-invalid" : ""
                       }`}

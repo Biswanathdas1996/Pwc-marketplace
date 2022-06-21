@@ -3,6 +3,8 @@ import { Grid, Card, Typography, Tooltip } from "@material-ui/core";
 import Box from "@mui/material/Box";
 import Web3 from "web3";
 import { _Walletaccount, _fetch } from "../../CONTRACT-ABI/connect";
+import { convertToToken } from "../../utils";
+
 const styles = {
   card: {
     height: "180px",
@@ -45,7 +47,7 @@ const WalledCard = () => {
     setNetworkId(networkId);
 
     const getWalletBalance = await _fetch("getWalletBalance", account);
-    const balnceInETH = getWalletBalance / 1000000000000000000;
+    const balnceInETH = convertToToken(getWalletBalance);
     setBalance(balnceInETH);
 
     switch (networkId) {
