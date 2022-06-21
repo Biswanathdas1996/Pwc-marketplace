@@ -1,5 +1,5 @@
 export const Network = `rinkeby`;
-
+export const NetworkTest = `rinkeby`;
 export const EtherscanBaseAPI = `https://api-${Network}.etherscan.io/api`;
 
 export const EtherscanAPIKEY = `WCVDU52748WW4F7EKDEDB89HKH41BIA4N2`;
