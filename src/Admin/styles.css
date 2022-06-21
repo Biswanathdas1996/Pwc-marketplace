@@ -1,0 +1,26 @@
+.container {
+    margin-top: 2rem;
+}
+
+.header-box {
+    width: 10rem;
+    height: 5rem;
+    border: 2px solid black;
+    margin-left: 4rem;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.search-input {
+    margin-right: 10px;
+    width: 100%;
+}
+
+/* .MuiButton-outlinedPrimary  {
+    color: green !important;
+    border-color: green !important;
+} */
+
+.MuiTableContainer-root {
+    margin-bottom: 1rem;
+}
