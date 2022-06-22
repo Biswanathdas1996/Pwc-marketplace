@@ -33,7 +33,7 @@ export default function UserTable(props) {
           <Table>
             <TableHead>
               <TextField
-                label="Search User...."
+                label="Search User..."
                 InputProps={{
                   endAdornment: (
                     <InputAdornment>
