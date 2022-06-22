@@ -10,7 +10,7 @@ export const validateUserWithWallat = () => {
   //   return accounts[0] === decode(getUid);
 };
 
-const multiplier = 100000;
+const multiplier = 1000000000000000000;
 
 export const convertToToken = (token) => {
   return token / multiplier;
@@ -18,4 +18,16 @@ export const convertToToken = (token) => {
 
 export const convertFromToken = (token) => {
   return token * multiplier;
+};
+
+export const mapDataForPayableCollection = (getAllCollections) => {
+  return getAllCollections.reduce((acc, item) => {
+    const found = acc.find((i) => i.collection === item[0]);
+    if (found) {
+      found.id.push(item[1]);
+    } else {
+      acc.push({ collection: item[0], id: [item[1]] });
+    }
+    return acc;
+  }, []);
 };

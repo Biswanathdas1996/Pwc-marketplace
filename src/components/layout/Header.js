@@ -58,6 +58,10 @@ const Header = () => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
+  const logOut = () => {
+    localStorage.clear();
+    history("/");
+  };
   const menuId = "primary-search-account-menu";
   const renderMenu = (
     <Menu
@@ -134,7 +138,7 @@ const Header = () => {
         <Link href="/">How It Works</Link>
       </MenuItem>
       <MenuItem>
-        <Link href="/publishArt">Create</Link>
+        <Link onClick={() => logOut()}>Log out</Link>
       </MenuItem>
       <MenuItem>
         <p>Sign In</p>
@@ -216,9 +220,9 @@ const Header = () => {
                     marginRight: "20px",
                     textTransform: "none",
                   }}
-                  onClick={() => history("/publishArt")}
+                  onClick={() => logOut()}
                 >
-                  Create
+                  Log Out
                 </Button>
                 <Button
                   type="button"

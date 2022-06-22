@@ -12,7 +12,7 @@ import DeleteOutlineIcon from "@mui/icons-material/Delete";
 import { IpfsViewLink, IPFSLink } from "../config";
 import { pink } from "@mui/material/colors";
 import TransctionModal from "../components/shared/TransctionModal";
-import { convertFromToken } from "../utils";
+// import { convertFromToken } from "../utils";
 // const web3 = new Web3(window.ethereum);
 
 const client = create(IPFSLink);
@@ -34,7 +34,7 @@ const Mint = () => {
 
   let history = useNavigate();
 
-  const saveData = async ({ title, category, attributes, price }) => {
+  const saveData = async ({ title, category, attributes, price, payType }) => {
     setStart(true);
     let responseData;
 
@@ -43,6 +43,7 @@ const Mint = () => {
       const metaData = {
         name: title,
         category: category,
+        payType: payType,
         image: IpfsViewLink(results.path),
         description: description,
         attributes: attributes,
@@ -53,7 +54,7 @@ const Mint = () => {
       responseData = await _transction(
         "mintNFT",
         IpfsViewLink(resultsSaveMetaData.path),
-        convertFromToken(price),
+        price,
         category
       );
     }
@@ -102,6 +103,7 @@ const Mint = () => {
                         title: "",
                         text: "",
                         category: "",
+                        payType: "",
                         royelty: 0,
                         price: "",
                         attributes: [],
@@ -147,7 +149,7 @@ const Mint = () => {
                                 </Field>
                               </div>
                             </Grid>
-                            <Grid item lg={6} md={6} sm={12} xs={12}>
+                            <Grid item lg={12} md={12} sm={12} xs={12}>
                               <div
                                 className="form-group"
                                 style={{ marginLeft: 10, marginTop: 10 }}
@@ -168,6 +170,31 @@ const Mint = () => {
                                   }`}
                                   style={{ marginRight: 10, padding: 9 }}
                                 />
+                              </div>
+                            </Grid>
+                            <Grid item lg={6} md={6} sm={12} xs={12}>
+                              <div
+                                className="form-group"
+                                style={{ marginLeft: 10, marginTop: 10 }}
+                              >
+                                <label for="title" className="my-2">
+                                  Payment Type{" "}
+                                  <span className="text-danger">*</span>
+                                </label>
+                                <Field
+                                  name="payType"
+                                  component="select"
+                                  className={`form-control text-muted ${
+                                    touched.payType && errors.payType
+                                      ? "is-invalid"
+                                      : ""
+                                  }`}
+                                  style={{ marginRight: 10, padding: 9 }}
+                                >
+                                  <option>-- Please select --</option>
+                                  <option value="earn">Earn coin</option>
+                                  <option value="expense">Expense coin</option>
+                                </Field>
                               </div>
                             </Grid>
 

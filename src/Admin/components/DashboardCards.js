@@ -2,7 +2,7 @@
 import PropTypes from "prop-types";
 import { Card, Typography } from "@mui/material";
 
-AppWidgetSummary.propTypes = {
+DashboardCards.propTypes = {
   color: PropTypes.string,
   icon: PropTypes.string,
   title: PropTypes.string.isRequired,
@@ -10,7 +10,7 @@ AppWidgetSummary.propTypes = {
   sx: PropTypes.object,
 };
 
-export default function AppWidgetSummary({
+export default function DashboardCards({
   title,
   total,
   color = "primary",

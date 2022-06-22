@@ -10,7 +10,7 @@ import Profile from "./Pages/Profile";
 import HowITworks from "./Pages/HowITworks";
 import Register from "./Pages/Register";
 import Login from "./Pages/Login";
-import Dashboard from "./Admin";
+import Dashboard from "./Admin/Dashboard";
 
 class Routing extends React.Component {
   render() {
@@ -31,7 +31,7 @@ class Routing extends React.Component {
         <Route exact path="/HowItWorks" element={<HowITworks />} />
         <Route exact path="/register" element={<Register />} />
         <Route exact path="/login" element={<Login />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
+        <Route exact path="/admin" element={<Dashboard />} />
         <Route
           render={function () {
             return <h1>Not Found</h1>;
