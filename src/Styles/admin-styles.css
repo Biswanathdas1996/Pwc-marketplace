@@ -1,0 +1,17 @@
+.container {
+    margin-top: 2rem;
+}
+
+.header-box {
+    width: 10rem;
+    height: 5rem;
+    border: 2px solid black;
+    margin-left: 4rem;
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.MuiContainer-root {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
