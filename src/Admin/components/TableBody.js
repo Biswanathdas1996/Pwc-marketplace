@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Button, TableRow, TableCell, Typography } from "@mui/material";
+import SendCoinModal from "./SendCoinModal";
 
 export default function TableBodyUI({ user }) {
-  const [usersData, setUsersData] = React.useState({});
+  const [usersData, setUsersData] = useState({});
+  const [sendCoinModalBool, setSendCoinModalBool] = useState(false);
 
   useEffect(() => {
     getDetails();
@@ -16,6 +18,15 @@ export default function TableBodyUI({ user }) {
         setUsersData(data);
       });
   };
+
+  const handleModal = () => {
+    setSendCoinModalBool(true);
+  };
+
+  const handleModalClose = () => {
+    setSendCoinModalBool(false);
+  };
+
   const { addressId } = user;
   const { name, guid, employeeID } = usersData;
   return (
@@ -47,10 +58,17 @@ export default function TableBodyUI({ user }) {
             marginRight: "0px",
             textTransform: "none",
           }}
+          onClick={() => handleModal()}
         >
           Send Coins
         </Button>
       </TableCell>
+      <SendCoinModal
+        sendCoinModalBool={sendCoinModalBool}
+        usersData={usersData}
+        handleModalClose={handleModalClose}
+        addressId={addressId}
+      />
     </TableRow>
   );
 }
