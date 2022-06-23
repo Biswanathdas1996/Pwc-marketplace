@@ -4,12 +4,9 @@ import "../Styles/admin-styles.css";
 import AppWidgetSummary from "./components/DashboardCards";
 import ThemeProvider from "../Theme/index";
 import UserTable from "./components/UserTable";
-import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";
 import { _fetch } from "../CONTRACT-ABI/connect";
 
 function Dashboard() {
-  let history = useNavigate();
   const [usersData, setUsersData] = React.useState(null);
 
   useEffect(() => {

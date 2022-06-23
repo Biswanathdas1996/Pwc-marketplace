@@ -8,8 +8,6 @@ import { useNavigate } from "react-router-dom";
 import { _fetch } from "../CONTRACT-ABI/connect";
 
 function Dashboard() {
-  const [tokens, setToken] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
   let history = useNavigate();
 
@@ -18,11 +16,7 @@ function Dashboard() {
   }, []);
 
   async function fetchAllPosts() {
-    setLoading(true);
-    const getAllToken = await _fetch("getToken");
     const getAllCollections = await _fetch("getAllCollections");
-    setToken(getAllToken.slice(0, 10));
-    setLoading(false);
     var revMyArr = [].concat(getAllCollections).reverse();
     setData(revMyArr);
   }
