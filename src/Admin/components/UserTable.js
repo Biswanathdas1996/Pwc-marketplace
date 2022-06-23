@@ -28,7 +28,7 @@ export default function UserTable(props) {
           <Table>
             <TableHead>
               <TableRow>
-                {TABLE_HEAD.map((headCell) => (
+                {TABLE_HEAD.map((headCell, i) => (
                   <TableCell
                     sx={{ fontWeight: "bold" }}
                     key={headCell.id}
@@ -40,8 +40,13 @@ export default function UserTable(props) {
               </TableRow>
             </TableHead>
             <TableBody>
-              {users?.map((person) => {
-                return <TableBodyUI user={person} />;
+              {users?.map((person, i) => {
+                return (
+                  <TableBodyUI
+                    user={person}
+                    key={person.employeeID + "-" + i}
+                  />
+                );
               })}
             </TableBody>
           </Table>

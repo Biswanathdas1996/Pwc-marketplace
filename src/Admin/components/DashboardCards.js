@@ -17,7 +17,6 @@ export default function DashboardCards({
   sx,
   ...other
 }) {
-  console.log("color", color);
   return (
     <Card
       sx={{
