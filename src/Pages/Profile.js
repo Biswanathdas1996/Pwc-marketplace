@@ -45,6 +45,7 @@ const ProfilePage = () => {
           height: 200,
           width: "100%",
           backgroundImage: `url(${BackgroundImg})`,
+          marginTop: "-10px",
         }}
       >
         <Container>

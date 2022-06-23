@@ -31,3 +31,7 @@ export const mapDataForPayableCollection = (getAllCollections) => {
     return acc;
   }, []);
 };
+
+export const coinName = () => {
+  return "Pcoin";
+};

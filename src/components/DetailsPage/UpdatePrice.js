@@ -5,6 +5,7 @@ import { Grid } from "@mui/material";
 import { _transction } from "../../CONTRACT-ABI/connect";
 import TransctionModal from "../shared/TransctionModal";
 import Web3 from "web3";
+import { coinName } from "../../utils";
 const web3 = new Web3(window.ethereum);
 
 const VendorSchema = Yup.object().shape({
@@ -63,7 +64,7 @@ const UpdatePrice = ({ price, tokenId, fetchNftInfo }) => {
                       type="text"
                       name="amount"
                       autoComplete="flase"
-                      placeholder="Enter amount (PWCTOKEN)"
+                      placeholder={`Enter amount ${coinName()}`}
                       className={`form-control text-muted ${
                         touched.amount && errors.amount ? "is-invalid" : ""
                       }`}

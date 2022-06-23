@@ -19,7 +19,7 @@ import TransactionHistory from "./TransactionHistory";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 // import UpdatePrice from "./UpdatePrice";
-import { convertToToken } from "../../utils";
+import { convertToToken, coinName } from "../../utils";
 
 // const countData = ["05", "08", "35", "12"];
 
@@ -116,7 +116,7 @@ const RightContent = ({
               alt="nft"
             />
             <Typography sx={{ fontWeight: "bold", fontSize: "18px" }}>
-              {convertToToken(price)} PWCTOKEN
+              {convertToToken(price)} {coinName()}
             </Typography>
           </Stack>
         </Grid>
@@ -155,7 +155,7 @@ const RightContent = ({
             }}
             onClick={buynow}
           >
-            Buy for {convertToToken(price)} PWCTOKEN
+            Buy for {convertToToken(price)} {coinName()}
           </Button>
           <Button
             variant="outlined"

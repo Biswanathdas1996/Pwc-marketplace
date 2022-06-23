@@ -12,7 +12,7 @@ import { buyNft } from "../../functions/buyNft";
 import TransctionModal from "./TransctionModal";
 import MarkAsFevourite from "./MarkAsFevourite";
 import RedirectToOpenSea from "./RedirectToOpenSea";
-import { convertToToken } from "../../utils";
+import { convertToToken, coinName } from "../../utils";
 
 export default function NFTCard({ tokenId, reload = () => null }) {
   const [nftData, setNftData] = useState(null);
@@ -135,7 +135,7 @@ export default function NFTCard({ tokenId, reload = () => null }) {
                 Price{" "}
               </span>
               <strong style={{ fontSize: 12, fontWeight: "bold" }}>
-                {convertToToken(price)} PWCTOKEN
+                {convertToToken(price)} {coinName()}
               </strong>
             </p>
           </div>

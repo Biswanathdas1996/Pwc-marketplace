@@ -3,7 +3,7 @@ import { Grid, Card, Typography, Tooltip } from "@material-ui/core";
 import Box from "@mui/material/Box";
 import Web3 from "web3";
 import { _Walletaccount, _fetch } from "../../CONTRACT-ABI/connect";
-import { convertToToken } from "../../utils";
+import { convertToToken, coinName } from "../../utils";
 
 const styles = {
   card: {
@@ -76,7 +76,7 @@ const WalledCard = () => {
             <Typography>Total Balance</Typography>
             <Typography style={styles.typo2}>
               {parseFloat(Number(balance)).toFixed(2)}{" "}
-              <small style={{ color: "#dd536c" }}>PWCTOKEN</small>
+              <small style={{ color: "#dd536c" }}>{coinName()}</small>
             </Typography>
           </Card>
         </Grid>
