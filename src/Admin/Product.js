@@ -6,7 +6,7 @@ import ProductTable from "./components/ProductTable";
 import { Button } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { _fetch } from "../CONTRACT-ABI/connect";
-
+import AdminLayout from "./Layout";
 function Dashboard() {
   const [data, setData] = useState([]);
   let history = useNavigate();
@@ -23,28 +23,30 @@ function Dashboard() {
 
   return (
     <ThemeProvider>
-      <div className="container">
-        <Grid container spacing={2}>
-          <Grid item sm={12}>
-            <Button
-              type="button"
-              variant="contained"
-              style={{ float: "right", padding: 8, borderRadius: 4 }}
-              sx={{
-                marginRight: "20px",
-                textTransform: "none",
-              }}
-              onClick={() => history("/publishArt")}
-            >
-              Create Tokens
-            </Button>
-          </Grid>
+      <AdminLayout>
+        <div className="container">
+          <Grid container spacing={2}>
+            <Grid item sm={12}>
+              <Button
+                type="button"
+                variant="contained"
+                style={{ float: "right", padding: 8, borderRadius: 4 }}
+                sx={{
+                  marginRight: "20px",
+                  textTransform: "none",
+                }}
+                onClick={() => history("/publishArt")}
+              >
+                Create Tokens
+              </Button>
+            </Grid>
 
-          <Grid item sm={12}>
-            {data && <ProductTable tokens={data} />}
+            <Grid item sm={12}>
+              {data && <ProductTable tokens={data} />}
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
+      </AdminLayout>
     </ThemeProvider>
   );
 }

@@ -54,6 +54,7 @@ export default function TableBodyUI({ user }) {
         <Button
           variant="outlined"
           size="small"
+          style={{ float: "right", borderRadius: 4 }}
           sx={{
             marginRight: "0px",
             textTransform: "none",

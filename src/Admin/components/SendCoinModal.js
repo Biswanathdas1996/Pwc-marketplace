@@ -4,7 +4,7 @@ import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import { Button, Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import TextareaAutosize from "@mui/material/TextareaAutosize";
+import TextField from "@mui/material/TextField";
 
 export default function SendCoinModal(props) {
   const { sendCoinModalBool, usersData, handleModalClose, addressId } = props;
@@ -25,7 +25,11 @@ export default function SendCoinModal(props) {
               Send Coin
             </Typography>
           </Box>
-          <CloseIcon onClick={handleModalClose} className="modal-close-icon" />
+          <CloseIcon
+            onClick={handleModalClose}
+            className="modal-close-icon"
+            style={{ color: "white" }}
+          />
         </Stack>
         <div className="modal-body">
           <Stack
@@ -102,15 +106,20 @@ export default function SendCoinModal(props) {
               {addressId}
             </Typography>
           </Stack>
-          <TextareaAutosize
-            placeholder="Enter Coin Amount..."
-            minRows={3}
-            className="send-coin-input"
-          />
+          <Box
+            sx={{
+              maxWidth: "100%",
+            }}
+            style={{ margin: 10 }}
+          >
+            <TextField fullWidth label="Amount" id="fullWidth" />
+          </Box>
+
           <Box textAlign="center">
             <Button
-              variant="outlined"
+              variant="contained"
               size="small"
+              style={{ float: "right", borderRadius: 4, margin: 10 }}
               sx={{
                 marginRight: "0px",
                 textTransform: "none",
