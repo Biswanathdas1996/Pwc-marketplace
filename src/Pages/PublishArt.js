@@ -79,7 +79,7 @@ const Mint = () => {
   const modalClose = () => {
     setStart(false);
     setResponse(null);
-    history("/");
+    history("/admin/products");
   };
   return (
     <>
@@ -110,7 +110,6 @@ const Mint = () => {
                       }}
                       // validationSchema={VendorSchema}
                       onSubmit={(values, { setSubmitting }) => {
-                        console.log("values=======>", values);
                         saveData(values);
                         setSubmitting(false);
                       }}
