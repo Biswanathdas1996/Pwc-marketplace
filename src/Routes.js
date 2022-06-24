@@ -12,6 +12,7 @@ import Register from "./Pages/Register";
 import Login from "./Pages/Login";
 import Dashboard from "./Admin/Dashboard";
 import Product from "./Admin/Product";
+import CategoryDetails from "./AddCategory/Category-Details";
 
 class Routing extends React.Component {
   render() {
@@ -34,6 +35,7 @@ class Routing extends React.Component {
         <Route exact path="/login" element={<Login />} />
         <Route exact path="/admin" element={<Dashboard />} />
         <Route exact path="/admin/products" element={<Product />} />
+        <Route exact path="/category" element={<CategoryDetails />} />
         <Route
           render={function () {
             return <h1>Not Found</h1>;
