@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Button, TableRow, TableCell, Typography } from "@mui/material";
 import SendCoinModal from "./SendCoinModal";
+import { _fetch } from "../../CONTRACT-ABI-ERC20/connect";
+import { convertToToken, coinName } from "../../utils";
 
 export default function TableBodyUI({ user }) {
   const [usersData, setUsersData] = useState({});
+  const [walletBalance, setWalletBalance] = useState(0);
   const [sendCoinModalBool, setSendCoinModalBool] = useState(false);
 
   useEffect(() => {
@@ -12,6 +15,9 @@ export default function TableBodyUI({ user }) {
   }, []);
 
   const getDetails = async () => {
+    const getBalance = await _fetch("balanceOf", addressId);
+    setWalletBalance(getBalance);
+
     await fetch(user?.uri)
       .then((response) => response.json())
       .then((data) => {
@@ -44,11 +50,15 @@ export default function TableBodyUI({ user }) {
           sx={{
             overflow: "hidden",
             textOverflow: "ellipsis",
-            // width: "15rem",
+            width: "10rem",
           }}
+          title={addressId}
         >
           {addressId}
         </Typography>
+      </TableCell>
+      <TableCell align="center">
+        {convertToToken(walletBalance)} {coinName()}
       </TableCell>
       <TableCell align="center">
         <Button
@@ -69,6 +79,7 @@ export default function TableBodyUI({ user }) {
         usersData={usersData}
         handleModalClose={handleModalClose}
         addressId={addressId}
+        getDetails={getDetails}
       />
     </TableRow>
   );

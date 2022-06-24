@@ -71,3 +71,15 @@ export const _transction_signed = async (service, ...props) => {
     });
   return responseData;
 };
+
+export const _fetch = async (service, ...props) => {
+  const callService = _.get(unsignedContract, ["methods", service]);
+  let data;
+  if (props) {
+    data = await callService(...props).call();
+  } else {
+    data = await callService().call();
+  }
+
+  return data;
+};

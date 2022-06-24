@@ -26,11 +26,11 @@ export default function UserTable(props) {
       <Card className="user-table-container" style={{ marginTop: 10 }}>
         <TableContainer className="user-table-container">
           <Table>
-            <TableHead>
+            <TableHead style={{ background: "#d93954" }}>
               <TableRow>
                 {TABLE_HEAD.map((headCell) => (
                   <TableCell
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "bold", color: "white" }}
                     key={headCell.id}
                     align="center"
                   >

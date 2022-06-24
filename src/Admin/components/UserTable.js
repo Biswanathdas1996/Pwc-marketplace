@@ -15,7 +15,8 @@ const TABLE_HEAD = [
   { id: "guid", label: "GUID", alignRight: false },
   { id: "employeeid", label: "Employee Id", alignRight: false },
   { id: "coins", label: "Address", alignRight: false },
-  { id: "button", label: "Button", alignRight: false },
+  { id: "balance", label: "Balance", alignRight: false },
+  { id: "button", label: "Actions", alignRight: false },
 ];
 
 export default function UserTable(props) {
@@ -26,11 +27,11 @@ export default function UserTable(props) {
       <Card className="user-table-container" style={{ marginTop: 10 }}>
         <TableContainer className="user-table-container">
           <Table>
-            <TableHead>
+            <TableHead style={{ background: "#d93954" }}>
               <TableRow>
                 {TABLE_HEAD.map((headCell, i) => (
                   <TableCell
-                    sx={{ fontWeight: "bold" }}
+                    sx={{ fontWeight: "bold", color: "white" }}
                     key={headCell.id}
                     align="center"
                   >

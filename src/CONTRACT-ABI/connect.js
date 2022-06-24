@@ -37,6 +37,30 @@ export const _transction = async (service, ...props) => {
   return responseData;
 };
 
+export const _transction_unsigned = async (service, ...props) => {
+  const callService = _.get(contract, ["methods", service]);
+  const accounts = await metamaskWeb3.eth.getAccounts();
+  const tx = callService(...props);
+
+  const responseData = await tx
+    .send({
+      from: accounts[0],
+      // gas: await tx.estimateGas(),
+      gas: "4700000",
+      value: 0,
+    })
+    .once("transactionHash", (txhash) => {
+      console.log(`Mining transaction ...`);
+      console.log(txhash);
+      return txhash;
+    })
+    .catch((error) => {
+      const errorData = { error };
+      return { error: errorData.error };
+    });
+  return responseData;
+};
+
 export const _paid_transction = async (cost, service, ...props) => {
   const callService = _.get(contract, ["methods", service]);
 
