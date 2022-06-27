@@ -5,10 +5,10 @@ import Modal from "@mui/material/Modal";
 import { Button, Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import TextField from "@mui/material/TextField";
-
 import { _transction } from "../../CONTRACT-ABI-ERC20/connect";
 import TransctionModal from "../../components/shared/TransctionModal";
 import { convertFromToken } from "../../utils";
+
 export default function SendCoinModal({
   sendCoinModalBool,
   usersData,
